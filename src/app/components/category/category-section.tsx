@@ -35,7 +35,8 @@ const CategorySection = () => {
               Together with useful notifications, collaboration, insights, and
               improvement tip lorem etc.
             </p>
-            <Link href="/job-grid-v1"
+            <Link
+              href="/job-list-v1"
               className="btn-two d-none d-lg-inline-block"
             >
               Explore all fields
@@ -49,7 +50,10 @@ const CategorySection = () => {
               className="card-style-one text-center mt-20 wow fadeInUp"
               data-wow-delay={`0.1${i + 1}s`}
             >
-              <Link href="/job-grid-v2" className={`bg wrapper ${i === 0 ? 'active' : ''}`}>
+              <Link
+                href="/job-list-v1"
+                className={`bg wrapper ${i === 0 ? "active" : ""}`}
+              >
                 <div className="icon d-flex align-items-center justify-content-center">
                   <Image src={item.icon} alt="icon" className="lazy-img" />
                 </div>
@@ -61,7 +65,7 @@ const CategorySection = () => {
         </div>
 
         <div className="text-center mt-40 d-lg-none">
-          <Link href="/job-grid-v1" className="btn-two">
+          <Link href="/job-list-v1" className="btn-two">
             Explore all fields
           </Link>
         </div>

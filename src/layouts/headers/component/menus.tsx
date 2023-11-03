@@ -7,10 +7,15 @@ const Menus = () => {
     <>
       {menu_data.map((menu) =>
         menu.sub_menus ? (
-          <li key={menu.id} className={`nav-item dropdown ${menu.title === 'Dashboard' ? 'dashboard-menu' : ''}`}>
+          <li
+            key={menu.id}
+            className={`nav-item dropdown ${
+              menu.title === "Dashboard" ? "" : ""
+            }`}
+          >
             <a
               className="nav-link dropdown-toggle"
-              href="#"
+              href={menu.link}
               role="button"
               data-bs-toggle="dropdown"
               data-bs-auto-close="outside"
@@ -49,10 +54,7 @@ const Menus = () => {
                       <ul className="style-none mega-dropdown-list">
                         {m.sub_menus.map((ms, i) => (
                           <li key={i}>
-                            <Link
-                              href={ms.link}
-                              className="dropdown-item"
-                            >
+                            <Link href={ms.link} className="dropdown-item">
                               <span>{ms.title}</span>
                             </Link>
                           </li>
@@ -66,7 +68,7 @@ const Menus = () => {
           </li>
         ) : (
           <li key={menu.id} className="nav-item">
-            <Link className="nav-link" href='/contact' role="button">
+            <Link className="nav-link" href={menu.link} role="button">
               {menu.title}
             </Link>
           </li>
