@@ -4,6 +4,7 @@ import Image from "next/image";
 import * as Yup from "yup";
 import { Resolver, useForm } from "react-hook-form";
 import ErrorMsg from "../common/error-msg";
+import axios from "axios"; // Import Axios for making HTTP requests
 import icon from "@/assets/images/icon/icon_60.svg";
 
 // form data type
@@ -47,11 +48,20 @@ const LoginForm = () => {
     reset,
   } = useForm<IFormData>({ resolver });
   // on submit
-  const onSubmit = (data: IFormData) => {
-    if (data) {
-      alert("Login successfully!");
+  const onSubmit = async (data: IFormData) => {
+    try {
+      // Send a POST request to the backend endpoint with form data
+      const response = await axios.post("http://localhost:8080/user/signin", {
+        email: data.email,
+        password: data.password,
+      });
+      // Handle the response, e.g., show success message or redirect
+      alert("User logged in successfully");
+      reset();
+    } catch (error) {
+      alert((error as any).response.data.message);
+      // Handle the error here, e.g., show an error message to the user
     }
-    reset();
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-10">
